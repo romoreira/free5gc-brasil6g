@@ -4,7 +4,7 @@ DOCKER_IMAGE_NAME_SLIM = 'base-slim'
 DOCKER_IMAGE_TAG = 'latest'
 
 .PHONY: base
-all: base-slim amf ausf nrf nssf pcf smf udm udr n3iwf upf webconsole
+all: base-slim amf ausf nrf nssf pcf smf udm udr n3iwf upf webconsole nwdaf
 
 base:
 	docker build -t ${DOCKER_IMAGE_OWNER}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ./base
@@ -14,6 +14,8 @@ base-slim:
 	docker build -t ${DOCKER_IMAGE_OWNER}/${DOCKER_IMAGE_NAME_SLIM}:${DOCKER_IMAGE_TAG} -f ./base/Dockerfile.base-slim ./base
 	docker image ls ${DOCKER_IMAGE_OWNER}/${DOCKER_IMAGE_NAME_SLIM}:${DOCKER_IMAGE_TAG}
 
+nwdaf: nwdaf
+	docker build --build-arg F5GC_MODULE=nwdaf -t nwdaf/6g -f ./nf_nwdaf/Dockerfile .
 smf: base-slim
 	docker build --build-arg F5GC_MODULE=smf -t ${DOCKER_IMAGE_OWNER}/smf-base:${DOCKER_IMAGE_TAG} -f ./base/Dockerfile.base-slim.nf ./base
 amf: base-slim

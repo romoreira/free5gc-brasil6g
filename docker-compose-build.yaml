@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
   free5gc-upf:
@@ -30,6 +30,17 @@ services:
       privnet:
         aliases:
           - db
+
+  nwdaf:
+    container_name: nwdaf
+    image: nwdaf/6g
+    command: java -jar ./app.jar
+    expose:
+      - "8080"
+    networks:
+      privnet:
+        aliases:
+          - nwdaf.free5gc.org
 
   free5gc-nrf:
     container_name: nrf
