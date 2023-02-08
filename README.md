@@ -1,3 +1,8 @@
+# Modifying free5GC base
+
+* Note we have inside base/ the directory free5GC submodule
+
+
 # free5GC compose
 
 This repository is a docker compose version of [free5GC](https://github.com/free5gc/free5gc) for stage 3. It's inspired by [free5gc-docker-compose](https://github.com/calee0219/free5gc-docker-compose) and also reference to [docker-free5gc](https://github.com/abousselmi/docker-free5gc).
